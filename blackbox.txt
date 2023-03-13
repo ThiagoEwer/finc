@@ -1,0 +1,62 @@
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 500,
+        child: ListView.builder(
+          itemCount: transactions.length,
+          itemBuilder: (ctx, index) {
+            final tr = transactions[index];
+            return Card(
+                    color: Colors.white,
+                    child: Row(
+                      children:<Widget>[
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.purple,
+                              width: 2,
+                            )
+                          ),
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            //VALOR QUE O MAP TR BUSCCA NA FUNÇÃO _TRANSACTION
+                         'R\$ ${tr.value.toStringAsFixed(2)}',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple,
+                            
+                          ),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:<Widget> [
+                            Text(tr.title, 
+                            style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: Colors.black,)), 
+                            Text(
+                              DateFormat('d MMM y').format(tr.date), 
+                               style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                      color: Colors.grey,)), 
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+          },
+      ),
+    );
+  }
+}
